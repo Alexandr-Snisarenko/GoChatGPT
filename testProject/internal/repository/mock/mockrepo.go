@@ -4,11 +4,12 @@ import (
 	"database/sql"
 
 	"github.com/Alexandr-Snisarenko/GoChatGPT/testProgect/internal/model"
+	"github.com/Alexandr-Snisarenko/GoChatGPT/testProgect/internal/repository"
 )
 
 type MockUserRepo struct{}
 
-func NewMockUserRepo() *MockUserRepo {
+func NewMockUserRepo() repository.UserRepository {
 	return &MockUserRepo{}
 }
 

@@ -12,7 +12,7 @@ type PGUserRepo struct {
 }
 
 func NewPGUserRepo(db *sql.DB) repository.UserRepository {
-	return PGUserRepo{db}
+	return &PGUserRepo{db}
 }
 
 func (r *PGUserRepo) GetByID(id int64) (*model.User, error) {

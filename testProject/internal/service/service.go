@@ -1,6 +1,8 @@
 package service
 
 import (
+	"database/sql"
+
 	"github.com/Alexandr-Snisarenko/GoChatGPT/testProgect/internal/model"
 	"github.com/Alexandr-Snisarenko/GoChatGPT/testProgect/internal/repository"
 )
@@ -13,6 +15,8 @@ func NewUserService(r repository.UserRepository) *UserService {
 	return &UserService{repo: r}
 }
 
-func (s *UserService) GetUser(id int64) (*model.User, error) {
-	return s.repo.GetByID(id)
+func (s *UserService) Start() error {
+	user := model.User{ID: 0, Name: "Test", Email: sql.NullString{Valid: false}}
+	err := s.repo.Create(&user)
+	return err
 }
