@@ -16,6 +16,14 @@ type Config struct {
 	SSLMode    string
 }
 
+func GetEnv(key, fallback string) string {
+	value := os.Getenv(key)
+	if value == "" {
+		return fallback
+	}
+	return value
+}
+
 func NewConfig() *Config {
 	// Загружаем .env файл
 	err := godotenv.Load()
@@ -24,11 +32,11 @@ func NewConfig() *Config {
 	}
 
 	return &Config{
-		DBHost:     os.Getenv("DB_HOST"),
-		DBPort:     os.Getenv("DB_PORT"),
-		DBUser:     os.Getenv("DB_USER"),
-		DBPassword: os.Getenv("DB_PASSWORD"),
-		DBName:     os.Getenv("DB_NAME"),
+		DBHost:     GetEnv("DB_HOST", "localhost"),
+		DBPort:     GetEnv("DB_PORT", "5432"),
+		DBUser:     GetEnv("DB_USER", "postgres"),
+		DBPassword: GetEnv("DB_PASSWORD", "postgres"),
+		DBName:     GetEnv("DB_NAME", "postgres"),
 		SSLMode:    "disable",
 	}
 }
