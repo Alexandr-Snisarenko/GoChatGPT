@@ -1,0 +1,15 @@
+
+# Go
+/backend/main
+/backend/.env
+
+# Node
+/frontend-react/node_modules
+/frontend-react/dist
+
+# Docker
+**/__pycache__/
+**/*.log
+
+# OS
+.DS_Store
